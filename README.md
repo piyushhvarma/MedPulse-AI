@@ -46,7 +46,7 @@ An intelligent **AI + API-driven system** that delivers:
 
 ---
 
-## 🔧 How It Works  
+##  How It Works  
 
 The system uses **Python-trained ML models** served via a **Node.js backend**, with persistence and authentication handled by **Supabase**.
 
