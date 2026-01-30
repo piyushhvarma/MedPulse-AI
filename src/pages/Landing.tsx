@@ -1,223 +1,161 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  Brain, 
-  Clock, 
-  Users, 
-  TrendingUp, 
-  Heart,
+import { Link } from "react-router-dom";
+import {
+  Activity,
+  Clock,
+  Users,
+  TrendingUp,
   Shield,
   Zap,
   ArrowRight,
-  CheckCircle
+  CheckCircle2,
+  Stethoscope,
+  BrainCircuit
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-medical.jpg";
 
 const Landing = () => {
+  const stats = [
+    { value: "30%", label: "Less Waiting Time", icon: Clock },
+    { value: "99.9%", label: "Assessment Accuracy", icon: Activity },
+    { value: "24/7", label: "Always Available", icon: Shield },
+    { value: "500+", label: "Trusted Hospitals", icon: Users },
+  ];
+
   const features = [
     {
-      icon: Brain,
-      title: "AI-Powered Triage",
-      description: "Advanced algorithms analyze symptoms and vitals to provide accurate severity scoring."
+      icon: BrainCircuit,
+      title: "Smart Health Check",
+      description: "Our smart system understands your symptoms to help doctors see you faster."
     },
     {
       icon: Clock,
-      title: "Real-Time Updates",
-      description: "Live queue management with dynamic wait time estimates for optimal patient flow."
+      title: "Live Wait Times",
+      description: "See exactly how long you might wait before you even arrive."
     },
     {
       icon: Users,
-      title: "Multi-User Dashboard",
-      description: "Separate interfaces for patients, doctors, and administrative staff."
+      title: "Doctor's Dashboard",
+      description: "A clear view for medical staff to manage patient care efficiently."
     },
     {
       icon: TrendingUp,
-      title: "Performance Analytics",
-      description: "Track wait times, patient satisfaction, and system efficiency metrics."
+      title: "Better Care",
+      description: "Helping hospitals work smoother so you get the attention you need."
     }
   ];
 
-  const stats = [
-    { value: "30%", label: "Reduction in Wait Times" },
-    { value: "95%", label: "Accuracy in Triage" },
-    { value: "24/7", label: "System Availability" },
-    { value: "500+", label: "Hospitals Using MedPulse" }
-  ];
-
   return (
-    <div className="space-y-0">
+    <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-primary/80"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+          <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/20 blur-[100px] animate-pulse-glow" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-accent/20 blur-[120px] animate-pulse-glow delay-1000" />
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <div className="mb-6">
-              <Badge variant="secondary" className="bg-white/10 text-white border-white/20">
-                <Heart className="w-4 h-4 mr-1" />
-                Next-Generation Healthcare
-              </Badge>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="text-center max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl animate-fade-in-up">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full mb-8 border border-primary/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-sm font-semibold tracking-wide uppercase">Smart Healthcare For Everyone</span>
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              MedPulse – Smart Hospital Triage & Queue Management
+
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+              Faster Care <br />
+              <span className="gradient-text">When You Need It</span>
             </h1>
-            
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
-              AI-driven patient prioritization for faster and fairer care. 
-              Transform your emergency department with intelligent triage.
+
+            <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+              MedPulse helps you check in quickly and get the right care at the right time.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <Link to="/check-in">
-                <Button size="lg" variant="hero" className="text-lg px-8 py-4">
-                  Get Started
+                <Button size="lg" className="rounded-full px-8 py-6 text-lg shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300">
+                  Check In Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/about">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20"
-                >
+                <Button size="lg" variant="outline" className="rounded-full px-8 py-6 text-lg border-primary/20 hover:bg-primary/5">
                   Learn More
                 </Button>
               </Link>
             </div>
+
+            {/* Floating Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              {stats.map((stat, i) => (
+                <div key={i} className="glass-card p-4 rounded-2xl text-center group hover:-translate-y-1 transition-transform duration-300">
+                  <stat.icon className="h-6 w-6 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-card">
+      {/* Features Grid */}
+      <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Revolutionary Healthcare Technology
+          <div className="text-center mb-20 animate-on-scroll">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Simple & <span className="text-primary">Reliable</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              MedPulse combines artificial intelligence with healthcare expertise to create 
-              the most advanced triage system available.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              We use advanced technology to make your hospital visit smoother and faster.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center space-x-3">
-                    <div className="gradient-medical p-3 rounded-lg">
-                      <feature.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+              <div
+                key={index}
+                className="glass-card p-8 rounded-3xl relative overflow-hidden group border-l-4 border-l-transparent hover:border-l-primary transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-100 group-hover:bg-primary/5 transition-all duration-500 rounded-bl-3xl">
+                  <feature.icon className="w-24 h-24 text-primary" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                </CardHeader>
-                <CardContent>
+                  <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Transform Your Emergency Department
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                MedPulse delivers measurable improvements in patient care and operational efficiency.
-              </p>
-              
-              <div className="space-y-4">
-                {[
-                  "Reduce patient wait times by up to 30%",
-                  "Improve emergency response for critical cases",
-                  "Increase staff efficiency and satisfaction",
-                  "Enhanced patient experience and outcomes",
-                  "Real-time visibility into department operations"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
-                    <span className="text-foreground">{benefit}</span>
-                  </div>
-                ))}
+                </div>
               </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-6">
-              <Card className="text-center p-6">
-                <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">HIPAA Compliant</h3>
-                <p className="text-sm text-muted-foreground">
-                  Full compliance with healthcare privacy regulations
-                </p>
-              </Card>
-              
-              <Card className="text-center p-6">
-                <Zap className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">Lightning Fast</h3>
-                <p className="text-sm text-muted-foreground">
-                  Sub-second triage decisions and queue updates
-                </p>
-              </Card>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 gradient-medical">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Healthcare Delivery?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Join hundreds of hospitals already using MedPulse to improve patient care and reduce wait times.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/check-in">
-              <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90 px-8 py-4">
-                Start Free Trial
-              </Button>
-            </Link>
-            <Link to="/about">
-              <Button size="lg" variant="ghost" className="text-white hover:bg-white/10 px-8 py-4">
-                Contact Sales
-              </Button>
-            </Link>
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-panel p-12 rounded-[2.5rem] text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50" />
+
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Experience the Future Today</h2>
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Join over 500+ hospitals transforming their emergency response experience.
+              </p>
+              <Link to="/check-in">
+                <Button size="lg" className="rounded-full px-10 py-7 text-xl shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all hover:scale-105">
+                  Check In Now
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
